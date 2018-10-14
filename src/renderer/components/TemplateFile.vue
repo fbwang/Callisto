@@ -4,8 +4,9 @@
         <div align="center">
         Drag Your Template File Here
         </div>
-        <div class="frame">
-
+        <div class="frame" id="templatefile" v-on:drop="fopen" v-on:dragover="fover">
+            <div align="center">Template: </div>
+            <span>{{templateFile}}</span>
         </div>
     </div>
     <div class="right-side">
@@ -19,7 +20,27 @@
     import DataFile from "./TemplateFile/DataFile";
     export default {
         name: "TemplateFile",
-        components: {DataFile}
+        components: {DataFile},
+        data () {
+            return {
+                templateFile: ''
+            }
+        },
+        methods: {
+            fopen:function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                for (let f of event.dataTransfer.files) {
+                    this.templateFile = f.path;
+                    console.log('File(s) you dragged here: ', f.path);
+                }
+            },
+            fover:function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }
     }
 </script>
 
@@ -117,5 +138,8 @@
         margin: 5px;
         height: 200px;
         border: dashed 1px #42b983;
+    }
+    span{
+        color: aquamarine;
     }
 </style>
