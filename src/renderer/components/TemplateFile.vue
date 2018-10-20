@@ -12,7 +12,6 @@
     <div class="right-side">
         <data-file></data-file>
     </div>
-
     </main>
 </template>
 
@@ -33,6 +32,7 @@
 
                 for (let f of event.dataTransfer.files) {
                     this.templateFile = f.path;
+                    // this.$broadcast('execute',this.templateFile);
                     console.log('File(s) you dragged here: ', f.path);
                 }
             },
