@@ -82,7 +82,7 @@
     main {
         display: flex;
         justify-content: space-between;
-        height: 100%;
+        height: 80%;
     }
 
     main > div { flex-basis: 50%; height: 100% }
@@ -136,7 +136,7 @@
     }
     .frame{
         margin: 5px;
-        height: 200px;
+        height: 400px;
         border: dashed 1px #42b983;
     }
     span{

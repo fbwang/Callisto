@@ -5,7 +5,8 @@
     </div>
     <div class="frame" id="folder" v-on:drop="diropen" v-on:dragover="dirover">
             <div align="center">Datas: </div>
-            <span>{{folder}}</span>
+            <!--<span>{{folder}}</span>-->
+            <li v-for="file of files">{{file}}</li>
         </div>
     <div align="center">
         <button v-on:click="execute">Submit</button>
@@ -23,7 +24,7 @@
         data(){
             return{
                 folder: '',
-                file: {}
+                files: []
             }
         },
         methods: {
@@ -45,12 +46,13 @@
 
             execute:function(items){
                 if (this.$parent.templateFile === ''){
-                    
+
                 }
-                console.log(this.$parent.templateFile)
-                var workbook = XLSX.readFile(this.$parent.templateFile);
-                const sheetNames = workbook.SheetNames;
-                console.log(sheetNames);
+                console.log(this.$parent.templateFile);
+                console.log(this.files);
+                // var workbook = XLSX.readFile(this.$parent.templateFile);
+                // const sheetNames = workbook.SheetNames;
+                // console.log(sheetNames);
             }
         }
     };
